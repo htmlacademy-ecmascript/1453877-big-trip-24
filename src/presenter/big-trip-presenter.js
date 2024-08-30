@@ -25,6 +25,6 @@ export default class BigTripPresenter {
       render(new RoutePointView(), this.routePoints, RenderPosition.AFTERBEGIN);
     }
     render(new CreationFormView(), this.routePoints, RenderPosition.AFTERBEGIN);
-    render(new EditFormView, this.routePoints, RenderPosition.AFTERBEGIN);
+    render(new EditFormView(), this.routePoints, RenderPosition.AFTERBEGIN);
   }
 }
