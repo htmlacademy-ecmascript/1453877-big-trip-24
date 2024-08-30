@@ -44,7 +44,7 @@ const createRoutePointTemplate = () =>
     </div>
   </li>`;
 
-export default class RoutePoint {
+export default class RoutePointView {
   getTemplate() {
     return createRoutePointTemplate();
   }
