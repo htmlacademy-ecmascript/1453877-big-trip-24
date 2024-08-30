@@ -1,6 +1,6 @@
 import FiltersView from '../view/filters-view.js';
 import SortsView from '../view/sorts-view.js';
-import RoutePoint from '../view/route-point-view.js';
+import RoutePointView from '../view/route-point-view.js';
 import CreationFormView from '../view/creation-form-view.js';
 import EditFormView from '../view/edit-form-view.js';
 import { render, RenderPosition } from '../render.js';
@@ -22,7 +22,7 @@ export default class BigTripPresenter {
     render(new FiltersView(), this.tripControlsFilters, RenderPosition.BEFOREEND);
     render(new SortsView(), this.routePoints, RenderPosition.BEFOREBEGIN);
     for (let currentRoutePoint = 0; currentRoutePoint < 3; currentRoutePoint++) {
-      render(new RoutePoint(), this.routePoints, RenderPosition.AFTERBEGIN);
+      render(new RoutePointView(), this.routePoints, RenderPosition.AFTERBEGIN);
     }
     render(new CreationFormView(), this.routePoints, RenderPosition.AFTERBEGIN);
     render(new EditFormView, this.routePoints, RenderPosition.AFTERBEGIN);
