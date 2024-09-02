@@ -1,6 +1,5 @@
 import { createElement } from '../render.js';
-
-const FILTERS = ['everything', 'future', 'present', 'past'];
+import { FILTERS } from '../const.js';
 
 const createFilterItemTemplate = (filter) =>
   `<div class="trip-filters__filter">
@@ -8,15 +7,15 @@ const createFilterItemTemplate = (filter) =>
     <label class="trip-filters__filter-label" for="filter-${filter}">${filter}</label>
   </div>`;
 
-const createFilterListTemplate = () =>
+const createFiltersListTemplate = () =>
   `<form class="trip-filters" action="#" method="get">
     ${FILTERS.map((filter) => createFilterItemTemplate(filter)).join('')}
     <button class="visually-hidden" type="submit">Accept filter</button>
   </form>`;
 
-export default class FiltersView {
+export default class FiltersListView {
   getTemplate() {
-    return createFilterListTemplate();
+    return createFiltersListTemplate();
   }
 
   getElement() {

@@ -1,30 +1,30 @@
-import FiltersView from '../view/filters-view.js';
-import SortsView from '../view/sorts-view.js';
-import RoutePointView from '../view/route-point-view.js';
-import CreationFormView from '../view/creation-form-view.js';
-import EditFormView from '../view/edit-form-view.js';
+import FiltersListView from '../view/filters-list-view.js';
+import SortsListView from '../view/sorts-list-view.js';
+import TripEventView from '../view/trip-event-view.js';
+import EditTripEventFormView from '../view/edit-trip-event-form-view.js';
+import CreateTripEventFormView from '../view/create-trip-event-form-view.js';
 import { render, RenderPosition } from '../render.js';
 
 export default class BigTripPresenter {
-  constructor() {
-    this.pageHeader = document.querySelector('.page-header');
-    this.tripMain = this.pageHeader.querySelector('.trip-main');
-    this.tripControlsFilters = this.pageHeader.querySelector('.trip-controls__filters');
-    this.pageMain = document.querySelector('.page-main');
-    this.tripEvents = this.pageMain.querySelector('.trip-events');
+  constructor({
+    bigTripControlsFilters,
+    bigTripEvents,
+  }) {
 
-    this.routePoints = document.createElement('ul');
-    this.routePoints.classList.add('trip-events__list');
-    this.tripEvents.appendChild(this.routePoints);
+    this.bigTripControlsFilters = bigTripControlsFilters;
+    this.bigTripEvents = bigTripEvents;
   }
 
   init() {
-    render(new FiltersView(), this.tripControlsFilters, RenderPosition.BEFOREEND);
-    render(new SortsView(), this.routePoints, RenderPosition.BEFOREBEGIN);
-    for (let currentRoutePoint = 0; currentRoutePoint < 3; currentRoutePoint++) {
-      render(new RoutePointView(), this.routePoints, RenderPosition.AFTERBEGIN);
+    this.bigTripEventsList = document.createElement('ul');
+    this.bigTripEventsList.classList.add('trip-events__list');
+    this.bigTripEvents.appendChild(this.bigTripEventsList);
+    render(new FiltersListView(), this.bigTripControlsFilters, RenderPosition.BEFOREEND);
+    render(new SortsListView(), this.bigTripEventsList, RenderPosition.BEFOREBEGIN);
+    render(new CreateTripEventFormView(), this.bigTripEventsList, RenderPosition.BEFOREBEGIN);
+    render(new EditTripEventFormView(), this.bigTripEventsList, RenderPosition.BEFOREBEGIN);
+    for (let currentEvent = 0; currentEvent < 3; currentEvent++) {
+      render(new TripEventView(), this.bigTripEventsList, RenderPosition.AFTERBEGIN);
     }
-    render(new CreationFormView(), this.routePoints, RenderPosition.AFTERBEGIN);
-    render(new EditFormView(), this.routePoints, RenderPosition.AFTERBEGIN);
   }
 }
