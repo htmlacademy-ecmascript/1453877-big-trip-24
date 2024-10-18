@@ -1,15 +1,15 @@
 import { createElement } from '../render.js';
-import { FILTERS } from '../const.js';
+import { FilterTypes } from '../const.js';
 
-const createFilterItemTemplate = (filter) =>
+const createFilterItemTemplate = (filterType) =>
   `<div class="trip-filters__filter">
-    <input id="filter-${filter}" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="${filter}">
-    <label class="trip-filters__filter-label" for="filter-${filter}">${filter}</label>
+    <input id="filter-${filterType}" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="${filterType}">
+    <label class="trip-filters__filter-label" for="filter-${filterType}">${filterType}</label>
   </div>`;
 
 const createFiltersListTemplate = () =>
   `<form class="trip-filters" action="#" method="get">
-    ${FILTERS.map((filter) => createFilterItemTemplate(filter)).join('')}
+    ${FilterTypes.map((filterType) => createFilterItemTemplate(filterType)).join('')}
     <button class="visually-hidden" type="submit">Accept filter</button>
   </form>`;
 
