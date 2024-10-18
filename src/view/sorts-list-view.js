@@ -1,15 +1,15 @@
 import { createElement } from '../render.js';
-import { SORTS } from '../const.js';
+import { SortTypes } from '../const.js';
 
-const createSortItemTemplate = (sort) =>
-  `<div class="trip-sort__item  trip-sort__item--${sort}">
-      <input id="sort-${sort}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${sort}">
-      <label class="trip-sort__btn" for="sort-${sort}">${sort}</label>
-    </div>`;
+const createSortItemTemplate = (sortType) =>
+  `<div class="trip-sort__item  trip-sort__item--${sortType}">
+    <input id="sort-${sortType}" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-${sortType}" disabled="">
+    <label class="trip-sort__btn" for="sort-${sortType}">${sortType}</label>
+  </div>`;
 
 const createSortsListTemplate = () =>
   `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
-    ${SORTS.map((sort) => createSortItemTemplate(sort)).join('')}
+    ${SortTypes.map((sortType) => createSortItemTemplate(sortType)).join('')}
   </form>`;
 
 export default class SortsListView {
